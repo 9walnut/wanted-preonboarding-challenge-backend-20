@@ -1,4 +1,4 @@
-package com.exception_study.exception;
+package com.exception_study.preonboarding.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
   INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "Invalid token"),
   USER_NOT_FOUND(HttpStatus.NOT_FOUND, "User not founded"),
+  USER_ALREADY_EXIST(HttpStatus.BAD_REQUEST,"User already exists"),
   PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND,"Product not founded"),
   INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, "Invalid password"),
   INVALID_PERMISSION(HttpStatus.UNAUTHORIZED, "User has invalid permission"),

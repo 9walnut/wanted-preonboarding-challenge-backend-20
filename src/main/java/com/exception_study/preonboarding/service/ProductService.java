@@ -2,9 +2,10 @@ package com.exception_study.preonboarding.service.;
 
 import com.exception_study.preonboarding.dto.ProductDto;
 import com.exception_study.preonboarding.dto.request.RegisterRequest;
+import com.exception_study.preonboarding.dto.response.*;
 import com.exception_study.preonboarding.entity.Product;
 import com.exception_study.preonboarding.entity.UserAccount;
-import com.exception_study.exception.ErrorCode;
+import com.exception_study.preonboarding.exception.ErrorCode;
 import com.exception_study.preonboarding.exception.StudyApplicationException;
 import com.exception_study.preonboarding.repository.ProductRepository;
 import com.exception_study.preonboarding.repository.UserAccountRepository;
@@ -43,17 +44,62 @@ public class ProductService {
     return ProductDto.from(product);
   }
 
-  public ProductDto buy(int id, String userId){
+//  public ProductDto buy(int id, String userId){
+@Transactional(readOnly = true)
+public DetailsWithHistoryResponse getDetails(int id, String userId) {
+  UserAccount userAccount = userAccountRepository.findById(userId).orElseThrow(
+          () -> new StudyApplicationException(ErrorCode.USER_NOT_FOUND)
+  );
+  Product product = productRepository.findById(id).orElseThrow(
+          () -> new StudyApplicationException(ErrorCode.PRODUCT_NOT_FOUND)
+  );
+
+  List<ProductDto> history = productRepository.findTransaction_History(
+          product.getSeller(), userAccount.getUserName()).stream().map(ProductDto::from).toList();
+
+  return DetailsWithHistoryResponse.of(ProductDto.from(product),history);
+}
+
+  public ProductDto reserve(int id, String userId) {
     UserAccount userAccount = userAccountRepository.findById(userId).orElseThrow(
             () -> new StudyApplicationException(ErrorCode.USER_NOT_FOUND)
     );
-
     Product product = productRepository.findById(id).orElseThrow(
             () -> new StudyApplicationException(ErrorCode.PRODUCT_NOT_FOUND)
     );
     product.setBuyer(userAccount.getUserName());
+    product.setStatus("예약중");
 
     return ProductDto.from(product);
   }
 
+  public void approve(int id, String userId) {
+    UserAccount userAccount = userAccountRepository.findById(userId).orElseThrow(
+            () -> new StudyApplicationException(ErrorCode.USER_NOT_FOUND)
+    );
+    Product product = productRepository.findById(id).orElseThrow(
+            () -> new StudyApplicationException(ErrorCode.PRODUCT_NOT_FOUND)
+    );
+    if (!product.getSeller().equals(userAccount.getUserName())) {
+      throw new StudyApplicationException(ErrorCode.INVALID_PERMISSION);
+    }else if(!product.getStatus().equals("예약중")){
+      throw new StudyApplicationException(ErrorCode.INVALID_PERMISSION);
+    }
+    else {
+      product.setStatus("완료");
+    }
+
+  }
+
+  public HistoryResponse history(String userId) {
+    UserAccount userAccount = userAccountRepository.findById(userId).orElseThrow(
+            () -> new StudyApplicationException(ErrorCode.USER_NOT_FOUND)
+    );
+    String userName = userAccount.getUserName();
+
+    List<ProductDto> buyList = productRepository.findAllByBuyer(userName).stream().map(ProductDto::from).toList();
+    List<ProductDto> reservedList = productRepository.findReservedProducts(userName).stream().map(ProductDto::from).toList();
+
+    return HistoryResponse.of(buyList,reservedList);
+  }
 }

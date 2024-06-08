@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class StudyApplicationException extends RuntimeException{
-  private com.exception_study.exception.ErrorCode errorCode;
+  private com.exception_study.preonboarding.exception.ErrorCode errorCode;
   private String message;
 
-  public StudyApplicationException(com.exception_study.exception.ErrorCode errorCode){
+  public StudyApplicationException(com.exception_study.preonboarding.exception.ErrorCode errorCode){
     this.errorCode = errorCode;
     this.message = null;
   }
