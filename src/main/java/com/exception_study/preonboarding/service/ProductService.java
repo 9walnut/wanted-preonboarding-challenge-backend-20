@@ -1,12 +1,11 @@
 package com.exception_study.preonboarding.service.;
 
-import com.exception_study.preonboarding.dto.ProductDto;
 import com.exception_study.preonboarding.dto.request.RegisterRequest;
 import com.exception_study.preonboarding.dto.response.*;
 import com.exception_study.preonboarding.entity.Product;
 import com.exception_study.preonboarding.entity.UserAccount;
-import com.exception_study.preonboarding.exception.ErrorCode;
-import com.exception_study.preonboarding.exception.StudyApplicationException;
+import com.exception_study.preonboarding.global.exception.ErrorCode;
+import com.exception_study.preonboarding.global.exception.StudyApplicationException;
 import com.exception_study.preonboarding.repository.ProductRepository;
 import com.exception_study.preonboarding.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,7 @@
-package com.exception_study.preonboarding.config;
+package com.exception_study.preonboarding.global.config;
 
-import com.exception_study.preonboarding.config.filter.JwtAuthenticationFilter;
-import com.exception_study.config.filter.JwtExceptionFilter;
-import com.exception_study.preonboarding.exception.CustomAuthenticationEntryPoint;
+import com.exception_study.preonboarding.global.config.filter.JwtAuthenticationFilter;
+import com.exception_study.preonboarding.global.exception.CustomAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

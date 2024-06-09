@@ -1,4 +1,4 @@
-package com.exception_study.config.filter;
+package com.exception_study.preonboarding.global.config;
 
 import io.jsonwebtoken.JwtException;
 import jakarta.annotation.Nonnull;

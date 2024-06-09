@@ -1,4 +1,4 @@
-package com.exception_study.preonboarding.exception;
+package com.exception_study.preonboarding.global.exception;
 
 import com.exception_study.dto.response.ResponseDto;
 import com.exception_study.preonboarding.exception.*;

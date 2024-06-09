@@ -1,12 +1,12 @@
 package com.exception_study.preonboarding.service;
 
-import com.exception_study.preonboarding.config.security.*;
 import com.exception_study.preonboarding.dto.*;
 import com.exception_study.preonboarding.dto.request.*;
 import com.exception_study.preonboarding.dto.response.*;
 import com.exception_study.preonboarding.entity.*;
 import com.exception_study.preonboarding.exception.*;
-import com.exception_study.preonboarding.exception.ErrorCode;
+import com.exception_study.preonboarding.global.exception.*;
+import com.exception_study.preonboarding.global.config.security.*;
 import com.exception_study.preonboarding.repository.*;
 import lombok.*;
 import lombok.extern.slf4j.*;

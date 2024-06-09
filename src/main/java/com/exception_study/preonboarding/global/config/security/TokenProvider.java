@@ -1,4 +1,4 @@
-package com.exception_study.preonboarding.config.security;
+package com.exception_study.preonboarding.global.config.security;
 
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.exception_study.preonboarding.config;
+package com.exception_study.preonboarding.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

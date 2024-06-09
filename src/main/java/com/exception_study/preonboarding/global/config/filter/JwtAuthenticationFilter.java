@@ -1,6 +1,6 @@
-package com.exception_study.preonboarding.config.filter;
+package com.exception_study.preonboarding.global.config.filter;
 
-import com.exception_study.preonboarding.config.security.TokenProvider;
+import com.exception_study.preonboarding.global.config.security.TokenProvider;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.exception_study.preonboarding.exception;
+package com.exception_study.preonboarding.global.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

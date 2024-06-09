@@ -1,4 +1,4 @@
-package com.exception_study.preonboarding.exception;
+package com.exception_study.preonboarding.global.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class StudyApplicationException extends RuntimeException{
-  private com.exception_study.preonboarding.exception.ErrorCode errorCode;
+  private ErrorCode errorCode;
   private String message;
 
-  public StudyApplicationException(com.exception_study.preonboarding.exception.ErrorCode errorCode){
+  public StudyApplicationException(ErrorCode errorCode){
     this.errorCode = errorCode;
     this.message = null;
   }
