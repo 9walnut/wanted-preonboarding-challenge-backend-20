@@ -1,7 +1,8 @@
 package com.exception_study.preonboarding.api.product.dto;
 
 import com.exception_study.preonboarding.dto.*;
-import com.exception_study.preonboarding.entity.*;
+import com.exception_study.preonboarding.api.product.entity.Product;
+import com.exception_study.preonboarding.api.user_account.dto.UserAccountDto;
 import lombok.*;
 
 @Data
